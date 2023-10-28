@@ -21,9 +21,15 @@
   <ItemGroup>
     <None Remove="DataAccess\" />
     <None Remove="Mapping\" />
+    <None Remove="Dtos\Paycheck\" />
+    <None Remove="Services\" />
+    <None Remove="Services\Contracts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataAccess\" />
     <Folder Include="Mapping\" />
+    <Folder Include="Dtos\Paycheck\" />
+    <Folder Include="Services\" />
+    <Folder Include="Services\Contracts\" />
   </ItemGroup>
 </Project>

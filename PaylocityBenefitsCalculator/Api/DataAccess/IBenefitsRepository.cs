@@ -10,6 +10,13 @@ namespace Api.DataAccess
         Task<Employee?> GetEmployeeByIdAsync(int id);
         List<Employee> GetEmployees();
         Task<List<Employee>> GetEmployeesAsync();
+
+        int AddDependent(Dependent dependent);
+        Task<int> AddDependentAsync(Dependent dependent);
+        Dependent? GetDependentById(int id);
+        Task<Dependent?> GetDependentByIdAsync(int id);
+        List<Dependent> GetDependents();
+        Task<List<Dependent>> GetDependentsAsync();
     }
 }
 

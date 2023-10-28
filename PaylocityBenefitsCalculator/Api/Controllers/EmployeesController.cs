@@ -1,8 +1,7 @@
-﻿using Api.DataAccess;
-using Api.Dtos.Dependent;
+﻿using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
 using Api.Models;
-using AutoMapper;
+using Api.Services.Contracts;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -12,14 +11,11 @@ namespace Api.Controllers;
 [Route("api/v1/[controller]")]
 public class EmployeesController : ControllerBase
 {
-    private readonly IBenefitsRepository _benefitsRepository;
-    private readonly IMapper _mapper;
+    private readonly IEmployeeService _employeeService;
 
-    public EmployeesController(IBenefitsRepository benefitsRepository,
-        IMapper mapper)
+    public EmployeesController(IEmployeeService employeeService)
     {
-        _benefitsRepository = benefitsRepository;
-        _mapper = mapper;
+        _employeeService = employeeService;
     }
 
     [SwaggerOperation(Summary = "Get employee by id")]
@@ -28,11 +24,11 @@ public class EmployeesController : ControllerBase
     {
         try
         {
-            var employee = await _benefitsRepository.GetEmployeeByIdAsync(id);
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
 
             var result = new ApiResponse<GetEmployeeDto>
             {
-                Data = _mapper.Map<GetEmployeeDto>(employee),
+                Data = employee,
                 Success = true
             };
 
@@ -126,11 +122,10 @@ public class EmployeesController : ControllerBase
 
         try
         {
-
-            var employees = await _benefitsRepository.GetEmployeesAsync();
+            var employees = await _employeeService.GetEmployeesAsync();
             var result = new ApiResponse<List<GetEmployeeDto>>
             {
-                Data = _mapper.Map<List<GetEmployeeDto>>(employees),
+                Data = employees,
                 Success = true
             };
 
