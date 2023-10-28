@@ -1,6 +1,8 @@
-﻿using Api.Dtos.Dependent;
+﻿using Api.DataAccess;
+using Api.Dtos.Dependent;
 using Api.Dtos.Employee;
 using Api.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,11 +12,45 @@ namespace Api.Controllers;
 [Route("api/v1/[controller]")]
 public class EmployeesController : ControllerBase
 {
+    private readonly IBenefitsRepository _benefitsRepository;
+    private readonly IMapper _mapper;
+
+    public EmployeesController(IBenefitsRepository benefitsRepository,
+        IMapper mapper)
+    {
+        _benefitsRepository = benefitsRepository;
+        _mapper = mapper;
+    }
+
     [SwaggerOperation(Summary = "Get employee by id")]
     [HttpGet("{id}")]
     public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> Get(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var employee = await _benefitsRepository.GetEmployeeByIdAsync(id);
+
+            var result = new ApiResponse<GetEmployeeDto>
+            {
+                Data = _mapper.Map<GetEmployeeDto>(employee),
+                Success = true
+            };
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            var result = new ApiResponse<GetEmployeeDto>
+            {
+                Error = ex.Message,
+                Message = $"Error occurred. Message: {ex.Message}",
+                Data = null,
+                Success = false
+            };
+
+            return result;
+        }
+        
     }
 
     [SwaggerOperation(Summary = "Get all employees")]
@@ -22,7 +58,7 @@ public class EmployeesController : ControllerBase
     public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll()
     {
         //task: use a more realistic production approach
-        var employees = new List<GetEmployeeDto>
+        var employees2 = new List<GetEmployeeDto>
         {
             new()
             {
@@ -88,12 +124,29 @@ public class EmployeesController : ControllerBase
             }
         };
 
-        var result = new ApiResponse<List<GetEmployeeDto>>
+        try
         {
-            Data = employees,
-            Success = true
-        };
 
-        return result;
+            var employees = await _benefitsRepository.GetEmployeesAsync();
+            var result = new ApiResponse<List<GetEmployeeDto>>
+            {
+                Data = _mapper.Map<List<GetEmployeeDto>>(employees),
+                Success = true
+            };
+
+            return result;
+        }
+        catch (Exception ex)
+        {
+            var result = new ApiResponse<List<GetEmployeeDto>>
+            {
+                Error = ex.Message,
+                Message = $"Error occurred. Message: {ex.Message}",
+                Data = null,
+                Success = false
+            };
+
+            return result;
+        }
     }
 }

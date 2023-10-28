@@ -1,9 +1,12 @@
+using Api.DataAccess;
 using Microsoft.OpenApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IBenefitsRepository, BenefitsRepository>();
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
