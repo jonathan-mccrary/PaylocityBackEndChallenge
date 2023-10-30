@@ -1,0 +1,32 @@
+﻿<Properties StartupConfiguration="{9C7E8DBB-5135-4511-8E1E-26C83D58B2F5}|Default">
+  <MonoDevelop.Ide.ItemProperties.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Api/Controllers/EmployeesController.cs">
+    <Files>
+      <File FileName="Api/Program.cs" Line="1" Column="1" />
+      <File FileName="Api/Controllers/EmployeesController.cs" Line="39" Column="37" />
+      <File FileName="Api/Controllers/DependentsController.cs" />
+      <File FileName="Api/Models/ApiResponse.cs" Line="1" Column="1" />
+      <File FileName="Api/Models/Employee.cs" Line="1" Column="1" />
+      <File FileName="Api/Models/Relationship.cs" Line="1" Column="1" />
+      <File FileName="Api/Models/Dependent.cs" Line="1" Column="1" />
+      <File FileName="Api/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="Api/appsettings.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="PaylocityBenefitsCalculator">
+            <Node name="Api" expanded="True" selected="True" />
+            <Node name="ApiTests" expanded="True">
+              <Node name="IntegrationTests" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+</Properties>

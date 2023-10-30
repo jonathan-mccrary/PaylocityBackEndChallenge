@@ -1,6 +1,7 @@
-﻿using Api.Dtos.Dependent;
-using Api.Dtos.Employee;
+﻿using Api.Dtos.Employee;
 using Api.Models;
+using Api.Services.Contracts;
+using Api.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -10,90 +11,135 @@ namespace Api.Controllers;
 [Route("api/v1/[controller]")]
 public class EmployeesController : ControllerBase
 {
+    private readonly IEmployeeService _employeeService;
+
+    public EmployeesController(IEmployeeService employeeService)
+    {
+        _employeeService = employeeService;
+        CreateTestingData.SaveTestEmployees(CreateTestingData.CreateEmployees(), _employeeService);
+    }
+
+    [SwaggerOperation(Summary = "Add employee")]
+    [HttpPost()]
+    public async Task<ActionResult<ApiResponse<int?>>> AddEmployee(EmployeeDto employeeDto)
+    {
+        try
+        {
+            var id = await _employeeService.AddEmployeeAsync(employeeDto);
+            if (id == null)
+            {
+                return BadRequest(
+                    new ApiResponse<int?>
+                    {
+                        Data = id,
+                        Message = "Unable to add employee",
+                        Success = false
+                    });
+            }
+            else if (id == -1)
+            {
+                return BadRequest(
+                    new ApiResponse<int?>
+                    {
+                        Data = id,
+                        Message = "Cannot add employee with more than one partner",
+                        Success = false
+                    });
+            }
+
+            return Ok(
+                new ApiResponse<int?>
+                {
+                    Data = id,
+                    Success = true
+                });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(
+                new ApiResponse<int?>
+                {
+                    Error = ex.Message,
+                    Message = $"Error occurred. Message: {ex.Message}",
+                    Data = null,
+                    Success = false
+                });
+        }
+    }
+
     [SwaggerOperation(Summary = "Get employee by id")]
     [HttpGet("{id}")]
-    public async Task<ActionResult<ApiResponse<GetEmployeeDto>>> Get(int id)
+    public async Task<ActionResult<ApiResponse<EmployeeDto>>> Get(int id)
     {
-        throw new NotImplementedException();
+        try
+        {
+            var employee = await _employeeService.GetEmployeeByIdAsync(id);
+            if (employee == null)
+            {
+                return NotFound(
+                    new ApiResponse<EmployeeDto>
+                    {
+                        Data = null,
+                        Message = "Employee not found",
+                        Success = false
+                    });
+            }
+
+            return Ok(
+                new ApiResponse<EmployeeDto>
+                {
+                    Data = employee,
+                    Success = true
+                });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new ApiResponse<EmployeeDto>
+            {
+                Error = ex.Message,
+                Message = $"Error occurred. Message: {ex.Message}",
+                Data = null,
+                Success = false
+            });
+        }
+        
     }
 
     [SwaggerOperation(Summary = "Get all employees")]
     [HttpGet("")]
-    public async Task<ActionResult<ApiResponse<List<GetEmployeeDto>>>> GetAll()
+    public async Task<ActionResult<ApiResponse<List<EmployeeDto>>>> GetAll()
     {
-        //task: use a more realistic production approach
-        var employees = new List<GetEmployeeDto>
+        try
         {
-            new()
+            var employees = await _employeeService.GetEmployeesAsync();
+            if (employees == null)
             {
-                Id = 1,
-                FirstName = "LeBron",
-                LastName = "James",
-                Salary = 75420.99m,
-                DateOfBirth = new DateTime(1984, 12, 30)
-            },
-            new()
-            {
-                Id = 2,
-                FirstName = "Ja",
-                LastName = "Morant",
-                Salary = 92365.22m,
-                DateOfBirth = new DateTime(1999, 8, 10),
-                Dependents = new List<GetDependentDto>
-                {
-                    new()
+                return NotFound(
+                    new ApiResponse<EmployeeDto>
                     {
-                        Id = 1,
-                        FirstName = "Spouse",
-                        LastName = "Morant",
-                        Relationship = Relationship.Spouse,
-                        DateOfBirth = new DateTime(1998, 3, 3)
-                    },
-                    new()
-                    {
-                        Id = 2,
-                        FirstName = "Child1",
-                        LastName = "Morant",
-                        Relationship = Relationship.Child,
-                        DateOfBirth = new DateTime(2020, 6, 23)
-                    },
-                    new()
-                    {
-                        Id = 3,
-                        FirstName = "Child2",
-                        LastName = "Morant",
-                        Relationship = Relationship.Child,
-                        DateOfBirth = new DateTime(2021, 5, 18)
-                    }
-                }
-            },
-            new()
-            {
-                Id = 3,
-                FirstName = "Michael",
-                LastName = "Jordan",
-                Salary = 143211.12m,
-                DateOfBirth = new DateTime(1963, 2, 17),
-                Dependents = new List<GetDependentDto>
-                {
-                    new()
-                    {
-                        Id = 4,
-                        FirstName = "DP",
-                        LastName = "Jordan",
-                        Relationship = Relationship.DomesticPartner,
-                        DateOfBirth = new DateTime(1974, 1, 2)
-                    }
-                }
+                        Data = null,
+                        Message = "Employees not found",
+                        Success = false
+                    });
             }
-        };
 
-        var result = new ApiResponse<List<GetEmployeeDto>>
+            return Ok(
+                new ApiResponse<List<EmployeeDto>>
+                {
+                    Data = employees,
+                    Success = true
+                });
+        }
+        catch (Exception ex)
         {
-            Data = employees,
-            Success = true
-        };
-
-        return result;
+            return BadRequest(
+                new ApiResponse<List<EmployeeDto>>
+                {
+                    Error = ex.Message,
+                    Message = $"Error occurred. Message: {ex.Message}",
+                    Data = null,
+                    Success = false
+                });
+        }
     }
 }

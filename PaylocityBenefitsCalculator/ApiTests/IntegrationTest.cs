@@ -13,7 +13,10 @@ public class IntegrationTest : IDisposable
         {
             if (_httpClient == default)
             {
-                _httpClient = new HttpClient
+                HttpClientHandler clientHandler = new HttpClientHandler();
+                clientHandler.ServerCertificateCustomValidationCallback = (sender, cert, chain, sslPolicyErrors) => { return true; };
+
+                _httpClient = new HttpClient(clientHandler)
                 {
                     //task: update your port if necessary
                     BaseAddress = new Uri("https://localhost:7124")

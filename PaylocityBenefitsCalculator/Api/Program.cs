@@ -1,8 +1,19 @@
+using Api.DataAccess;
+using Api.Mapping;
+using Api.Services;
+using Api.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<IBenefitsRepository, BenefitsRepository>();
+builder.Services.AddScoped<IDependentService, DependentService>();
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IPaycheckService, PaycheckService>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -22,7 +33,13 @@ var allowLocalhost = "allow localhost";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(allowLocalhost,
-        policy => { policy.WithOrigins("http://localhost:3000", "http://localhost"); });
+        policy =>
+        {
+            policy.WithOrigins(
+                "https://localhost:7124",
+                "http://localhost:5124",
+                "http://localhost");
+        });
 });
 
 var app = builder.Build();
