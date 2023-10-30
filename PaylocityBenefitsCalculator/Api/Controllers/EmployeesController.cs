@@ -19,8 +19,8 @@ public class EmployeesController : ControllerBase
         CreateTestingData.SaveTestEmployees(CreateTestingData.CreateEmployees(), _employeeService);
     }
 
-    [SwaggerOperation(Summary = "Get employee by id")]
-    [HttpPost("{id}")]
+    [SwaggerOperation(Summary = "Add employee")]
+    [HttpPost()]
     public async Task<ActionResult<ApiResponse<int?>>> AddEmployee(EmployeeDto employeeDto)
     {
         try

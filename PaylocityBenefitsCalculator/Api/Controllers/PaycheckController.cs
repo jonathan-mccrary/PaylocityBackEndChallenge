@@ -33,34 +33,34 @@ public class PaycheckController : ControllerBase
 
             if (paycheckDto == null)
             {
-                return new ApiResponse<PaycheckDto>
-                {
-                    Data = null,
-                    Message = "Unable to calculate paycheck",
-                    Success = false
-                };
+                return NotFound(
+                    new ApiResponse<PaycheckDto>
+                    {
+                        Data = null,
+                        Message = "Unable to calculate paycheck",
+                        Success = false
+                    });
             }
 
-            return new ApiResponse<PaycheckDto>
-            {
-                Data = paycheckDto,
-                Success = true
-            };
+            return Ok(
+                new ApiResponse<PaycheckDto>
+                {
+                    Data = paycheckDto,
+                    Success = true
+                });
 
         }
         catch (Exception ex)
         {
-            return new ApiResponse<PaycheckDto>
-            {
-                Error = ex.Message,
-                Message = $"Error occurred. Message: {ex.Message}",
-                Data = null,
-                Success = false
-            };
-
+            return BadRequest(
+                new ApiResponse<PaycheckDto>
+                {
+                    Error = ex.Message,
+                    Message = $"Error occurred. Message: {ex.Message}",
+                    Data = null,
+                    Success = false
+                });
         }
-
     }
-
 }
 
