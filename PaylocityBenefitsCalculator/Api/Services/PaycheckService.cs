@@ -21,24 +21,91 @@ namespace Api.Services
             
         }
 
-        public PaycheckDto? GetEmployeePaycheck(int paycheckType, int employeeId)
+        public PaycheckPackageDto? GetEmployeePaycheck(int paycheckType, int employeeId)
         {
             if (!PaycheckCalculator.IsValidPaySplitType(paycheckType))
             {
                 throw new Exception("Invalid PaySplitType");
             }
             var employee = _benefitsRepository.GetEmployeeById(employeeId);
-            return PaycheckCalculator.CalculatePaycheck((PaySplitType)paycheckType, _mapper.Map<EmployeeDto>(employee));
+            if (employee == null)
+            {
+                return null;
+            }
+
+            PaycheckPackageDto paycheckPackageDto = new PaycheckPackageDto()
+            {
+                Employee = _mapper.Map<EmployeeDto>(employee),
+                PaySplitType = (PaySplitType)paycheckType
+            };
+
+            return PaycheckCalculator.CalculatePaycheck(paycheckPackageDto);
         }
 
-        public async Task<PaycheckDto?> GetEmployeePaycheckAsync(int paycheckType, int employeeId)
+        public async Task<PaycheckPackageDto?> GetEmployeePaycheckAsync(int paycheckType, int employeeId)
         {
             if (!PaycheckCalculator.IsValidPaySplitType(paycheckType))
             {
                 throw new Exception("Invalid PaySplitType");
             }
             var employee = await _benefitsRepository.GetEmployeeByIdAsync(employeeId);
-            return PaycheckCalculator.CalculatePaycheck((PaySplitType)paycheckType, _mapper.Map<EmployeeDto>(employee));
+            if (employee == null)
+            {
+                return null;
+            }
+
+            PaycheckPackageDto paycheckPackageDto = new PaycheckPackageDto()
+            {
+                Employee = _mapper.Map<EmployeeDto>(employee),
+                PaySplitType = (PaySplitType)paycheckType
+            };
+
+            return PaycheckCalculator.CalculatePaycheck(paycheckPackageDto);
         }
+
+
+        public PaycheckPackageDto? GetEmployeePaycheckForYear(int paycheckType, int employeeId, int year)
+        {
+            if (!PaycheckCalculator.IsValidPaySplitType(paycheckType))
+            {
+                throw new Exception("Invalid PaySplitType");
+            }
+            var employee = _benefitsRepository.GetEmployeeById(employeeId);
+            if (employee == null)
+            {
+                return null;
+            }
+
+            PaycheckPackageDto paycheckPackageDto = new PaycheckPackageDto()
+            {
+                Employee = _mapper.Map<EmployeeDto>(employee),
+                PaySplitType = (PaySplitType)paycheckType
+            };
+
+            return PaycheckCalculator.CalculateYearOfPaychecks(year, paycheckPackageDto);
+        }
+
+        public async Task<PaycheckPackageDto?> GetEmployeePaycheckForYearAsync(int paycheckType, int employeeId, int year)
+        {
+            if (!PaycheckCalculator.IsValidPaySplitType(paycheckType))
+            {
+                throw new Exception("Invalid PaySplitType");
+            }
+            var employee = await _benefitsRepository.GetEmployeeByIdAsync(employeeId);
+            if (employee == null)
+            {
+                return null;
+            }
+
+            PaycheckPackageDto paycheckPackageDto = new PaycheckPackageDto()
+            {
+                Employee = _mapper.Map<EmployeeDto>(employee),
+                PaySplitType = (PaySplitType)paycheckType
+            };
+
+            return PaycheckCalculator.CalculateYearOfPaychecks(year, paycheckPackageDto);
+        }
+
+       
     }
 }

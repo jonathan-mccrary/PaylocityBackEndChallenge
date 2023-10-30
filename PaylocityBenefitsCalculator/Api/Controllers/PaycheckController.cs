@@ -25,7 +25,7 @@ public class PaycheckController : ControllerBase
 
     [SwaggerOperation(Summary = "Get paycheck by employee id")]
     [HttpGet("{paycheckType}/{employeeId}")]
-    public async Task<ActionResult<ApiResponse<PaycheckDto>>> Get(int paycheckType, int employeeId)
+    public async Task<ActionResult<ApiResponse<PaycheckPackageDto>>> Get(int paycheckType, int employeeId)
     {
         try
         {
@@ -34,7 +34,7 @@ public class PaycheckController : ControllerBase
             if (paycheckDto == null)
             {
                 return NotFound(
-                    new ApiResponse<PaycheckDto>
+                    new ApiResponse<PaycheckPackageDto>
                     {
                         Data = null,
                         Message = "Unable to calculate paycheck",
@@ -43,7 +43,7 @@ public class PaycheckController : ControllerBase
             }
 
             return Ok(
-                new ApiResponse<PaycheckDto>
+                new ApiResponse<PaycheckPackageDto>
                 {
                     Data = paycheckDto,
                     Success = true
@@ -53,7 +53,47 @@ public class PaycheckController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest(
-                new ApiResponse<PaycheckDto>
+                new ApiResponse<PaycheckPackageDto>
+                {
+                    Error = ex.Message,
+                    Message = $"Error occurred. Message: {ex.Message}",
+                    Data = null,
+                    Success = false
+                });
+        }
+    }
+
+    [SwaggerOperation(Summary = "Get paychecks by employee id for a given year")]
+    [HttpGet("{paycheckType}/{employeeId}/{year}")]
+    public async Task<ActionResult<ApiResponse<PaycheckPackageDto>>> Get(int paycheckType, int employeeId, int year)
+    {
+        try
+        {
+            var paycheckDto = await _paycheckService.GetEmployeePaycheckForYearAsync(paycheckType, employeeId, year);
+
+            if (paycheckDto == null)
+            {
+                return NotFound(
+                    new ApiResponse<PaycheckPackageDto>
+                    {
+                        Data = null,
+                        Message = "Unable to calculate paycheck",
+                        Success = false
+                    });
+            }
+
+            return Ok(
+                new ApiResponse<PaycheckPackageDto>
+                {
+                    Data = paycheckDto,
+                    Success = true
+                });
+
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(
+                new ApiResponse<PaycheckPackageDto>
                 {
                     Error = ex.Message,
                     Message = $"Error occurred. Message: {ex.Message}",
