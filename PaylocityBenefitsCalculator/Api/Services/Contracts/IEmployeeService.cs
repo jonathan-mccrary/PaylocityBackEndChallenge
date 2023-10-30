@@ -6,11 +6,11 @@ namespace Api.Services.Contracts
 {
 	public interface IEmployeeService
 	{
-        int AddEmployee(Employee employee);
-        Task<int> AddEmployeeAsync(Employee employee);
-        GetEmployeeDto? GetEmployeeById(int id);
-        Task<GetEmployeeDto?> GetEmployeeByIdAsync(int id);
-        List<GetEmployeeDto> GetEmployees();
-        Task<List<GetEmployeeDto>> GetEmployeesAsync();
+        int? AddEmployee(EmployeeDto employee);
+        Task<int?> AddEmployeeAsync(EmployeeDto employee);
+        EmployeeDto? GetEmployeeById(int id);
+        Task<EmployeeDto?> GetEmployeeByIdAsync(int id);
+        List<EmployeeDto> GetEmployees();
+        Task<List<EmployeeDto>> GetEmployeesAsync();
     }
 }

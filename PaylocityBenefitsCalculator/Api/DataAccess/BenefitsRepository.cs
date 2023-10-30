@@ -3,15 +3,21 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Api.DataAccess
 {
+    /// <summary>
+    /// This unified repositry is used for all data access in this application.
+    /// For scalability, this could be separated into repos for given tables or relevant contexts/processes.
+    ///
+    /// Note: Both async and synchronous method have been included. 
+    /// </summary>
     public class BenefitsRepository : IBenefitsRepository
     {
         private readonly ApiContext _context;
-        public BenefitsRepository(ApiContext context)
+        public BenefitsRepository()
         {
-            _context = context;
+            _context = new ApiContext();
         }
 
-        public int AddEmployee(Employee employee)
+        public int? AddEmployee(Employee employee)
         {
             _context.Employees.Add(employee);
             _context.Dependents.AddRange(employee.Dependents);
@@ -19,7 +25,7 @@ namespace Api.DataAccess
             return employee.Id;
         }
 
-        public async Task<int> AddEmployeeAsync(Employee employee)
+        public async Task<int?> AddEmployeeAsync(Employee employee)
         {
             _context.Employees.Add(employee);
             _context.Dependents.AddRange(employee.Dependents);
@@ -55,14 +61,14 @@ namespace Api.DataAccess
                 .ToListAsync();
         }
 
-        public int AddDependent(Dependent dependent)
+        public int? AddDependent(Dependent dependent)
         {
             _context.Dependents.Add(dependent);
             _context.SaveChanges();
             return dependent.Id;
         }
 
-        public async Task<int> AddDependentAsync(Dependent dependent)
+        public async Task<int?> AddDependentAsync(Dependent dependent)
         {
             _context.Dependents.Add(dependent);
             await _context.SaveChangesAsync();

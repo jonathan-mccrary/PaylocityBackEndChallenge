@@ -1,11 +1,13 @@
-﻿using System;
-using Api.Dtos.Employee;
+﻿using Api.Dtos.Employee;
 
 namespace Api.Dtos.Paycheck
 {
-	public class GetPaycheckDto
+	/// <summary>
+	/// DTO for handling Paycheck data to be sent through the API
+	/// </summary>
+    public class PaycheckDto
 	{
-		public GetEmployeeDto? EmployeeDto { get; set; }
+		public EmployeeDto? EmployeeDto { get; set; }
 		public decimal GrossPay { get; set; }
 		public decimal NetPay { get; set; }
 		public decimal DeductionsTotal { get; set; }

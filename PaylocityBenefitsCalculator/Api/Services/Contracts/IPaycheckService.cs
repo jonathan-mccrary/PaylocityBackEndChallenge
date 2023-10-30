@@ -5,8 +5,8 @@ namespace Api.Services.Contracts
 {
 	public interface IPaycheckService
 	{
-		GetPaycheckDto? GetEmployeePaycheck(int employeeId);
-        Task<GetPaycheckDto?> GetEmployeePaycheckAsync(int employeeId);
+		PaycheckDto? GetEmployeePaycheck(int paycheckType, int employeeId);
+        Task<PaycheckDto?> GetEmployeePaycheckAsync(int paycheckType, int employeeId);
     }
 }
 

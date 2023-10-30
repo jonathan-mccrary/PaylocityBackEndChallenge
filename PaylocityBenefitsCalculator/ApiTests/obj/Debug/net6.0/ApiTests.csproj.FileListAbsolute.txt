@@ -1,10 +1,9 @@
-/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/CoverletSourceRootsMapping
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/CoverletSourceRootsMapping_ApiTests
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Api.deps.json
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Api.runtimeconfig.json
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/appsettings.Development.json
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/appsettings.json
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Api
-/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/xunit.runner.visualstudio.dotnetcore.testadapter.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/xunit.runner.reporters.netcoreapp10.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/xunit.runner.utility.netcoreapp10.dll
@@ -15,6 +14,7 @@
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/AutoMapper.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/AutoMapper.Collection.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Castle.Core.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.VisualStudio.CodeCoverage.Shim.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -29,13 +29,17 @@
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.Extensions.Primitives.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.OpenApi.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.CoreUtilities.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.PlatformAbstractions.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.CommunicationUtilities.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.CrossPlatEngine.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.TestPlatform.Utilities.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Microsoft.VisualStudio.TestPlatform.Common.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/testhost.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Moq.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Moq.AutoMock.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Newtonsoft.Json.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/NonBlocking.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/NuGet.Frameworks.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Swashbuckle.AspNetCore.Annotations.dll
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/bin/Debug/net6.0/Swashbuckle.AspNetCore.Swagger.dll

@@ -1,6 +1,8 @@
 ﻿using Api.Dtos.Paycheck;
 using Api.Models;
+using Api.Services;
 using Api.Services.Contracts;
+using Api.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -11,24 +13,27 @@ namespace Api.Controllers;
 public class PaycheckController : ControllerBase
 {
     private readonly IPaycheckService _paycheckService;
-    
-    public PaycheckController(IPaycheckService paycheckService)
+    private readonly IEmployeeService _employeeService;
+
+    public PaycheckController(IPaycheckService paycheckService,
+        IEmployeeService employeeService)
     {
         _paycheckService = paycheckService;
-        
+        _employeeService = employeeService;
+        CreateTestingData.SaveTestEmployees(CreateTestingData.CreateEmployees(), _employeeService);
     }
 
     [SwaggerOperation(Summary = "Get paycheck by employee id")]
-    [HttpGet("{employeeId}")]
-    public async Task<ActionResult<ApiResponse<GetPaycheckDto>>> Get(int employeeId)
+    [HttpGet("{paycheckType}/{employeeId}")]
+    public async Task<ActionResult<ApiResponse<PaycheckDto>>> Get(int paycheckType, int employeeId)
     {
         try
         {
-            var paycheckDto = await _paycheckService.GetEmployeePaycheckAsync(employeeId);
+            var paycheckDto = await _paycheckService.GetEmployeePaycheckAsync(paycheckType, employeeId);
 
             if (paycheckDto == null)
             {
-                return new ApiResponse<GetPaycheckDto>
+                return new ApiResponse<PaycheckDto>
                 {
                     Data = null,
                     Message = "Unable to calculate paycheck",
@@ -36,7 +41,7 @@ public class PaycheckController : ControllerBase
                 };
             }
 
-            return new ApiResponse<GetPaycheckDto>
+            return new ApiResponse<PaycheckDto>
             {
                 Data = paycheckDto,
                 Success = true
@@ -45,7 +50,7 @@ public class PaycheckController : ControllerBase
         }
         catch (Exception ex)
         {
-            return new ApiResponse<GetPaycheckDto>
+            return new ApiResponse<PaycheckDto>
             {
                 Error = ex.Message,
                 Message = $"Error occurred. Message: {ex.Message}",

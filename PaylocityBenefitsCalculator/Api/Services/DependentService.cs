@@ -19,40 +19,40 @@ namespace Api.Services
             _mapper = mapper;
         }
 
-        public int AddDependent(Dependent dependent)
+        public int? AddDependent(Dependent dependent)
         {
             return _benefitsRepository.AddDependent(dependent);
         }
 
-        public async Task<int> AddDependentAsync(Dependent dependent)
+        public async Task<int?> AddDependentAsync(Dependent dependent)
         {
             return await _benefitsRepository.AddDependentAsync(dependent);
         }
 
-        public GetDependentDto? GetDependentById(int id)
+        public DependentDto? GetDependentById(int id)
         {
             var dependent = _benefitsRepository.GetDependentById(id);
-            return _mapper.Map<GetDependentDto>(dependent);
+            return _mapper.Map<DependentDto>(dependent);
         }
 
-        public async Task<GetDependentDto?> GetDependentByIdAsync(int id)
+        public async Task<DependentDto?> GetDependentByIdAsync(int id)
         {
             var dependent = await _benefitsRepository.GetDependentByIdAsync(id);
-            return _mapper.Map<GetDependentDto>(dependent);
+            return _mapper.Map<DependentDto>(dependent);
         }
 
-        public List<GetDependentDto> GetDependents()
+        public List<DependentDto> GetDependents()
         {
             var dependents = _benefitsRepository.GetDependents();
 
-            return _mapper.Map<List<GetDependentDto>>(dependents);
+            return _mapper.Map<List<DependentDto>>(dependents);
         }
 
-        public async Task<List<GetDependentDto>> GetDependentsAsync()
+        public async Task<List<DependentDto>> GetDependentsAsync()
         {
             var dependents = await _benefitsRepository.GetDependentsAsync();
 
-            return _mapper.Map<List<GetDependentDto>>(dependents);
+            return _mapper.Map<List<DependentDto>>(dependents);
         }
     }
 }

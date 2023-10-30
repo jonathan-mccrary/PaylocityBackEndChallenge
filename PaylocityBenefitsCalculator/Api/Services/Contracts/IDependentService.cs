@@ -6,12 +6,12 @@ namespace Api.Services.Contracts
 {
 	public interface IDependentService
 	{
-        int AddDependent(Dependent dependent);
-        Task<int> AddDependentAsync(Dependent dependent);
-        GetDependentDto? GetDependentById(int id);
-        Task<GetDependentDto?> GetDependentByIdAsync(int id);
-        List<GetDependentDto> GetDependents();
-        Task<List<GetDependentDto>> GetDependentsAsync();
+        int? AddDependent(Dependent dependent);
+        Task<int?> AddDependentAsync(Dependent dependent);
+        DependentDto? GetDependentById(int id);
+        Task<DependentDto?> GetDependentByIdAsync(int id);
+        List<DependentDto> GetDependents();
+        Task<List<DependentDto>> GetDependentsAsync();
     }
 }
 
