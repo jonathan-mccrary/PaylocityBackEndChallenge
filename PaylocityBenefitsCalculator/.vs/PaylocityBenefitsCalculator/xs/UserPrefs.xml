@@ -2,31 +2,79 @@
   <MonoDevelop.Ide.ItemProperties.Api PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Api/Controllers/EmployeesController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Api/Utilities/PaycheckCalculator.cs">
     <Files>
-      <File FileName="Api/Program.cs" Line="1" Column="1" />
-      <File FileName="Api/Controllers/EmployeesController.cs" Line="39" Column="37" />
-      <File FileName="Api/Controllers/DependentsController.cs" />
-      <File FileName="Api/Models/ApiResponse.cs" Line="1" Column="1" />
-      <File FileName="Api/Models/Employee.cs" Line="1" Column="1" />
+      <File FileName="ApiTests/IntegrationTests/EmployeeIntegrationTests.cs" Line="37" Column="11" IsPinned="True" />
+      <File FileName="ApiTests/IntegrationTests/PaycheckIntegrationTests.cs" Line="169" Column="25" IsPinned="True" />
+      <File FileName="Api/Utilities/PaycheckCalculator.cs" Line="26" Column="31" IsPinned="True" />
+      <File FileName="Api/Service/PaycheckService.cs" Line="40" Column="26" IsPinned="True" />
+      <File FileName="ApiTests/IntegrationTests/DependentIntegrationTests.cs" Line="28" Column="6" />
+      <File FileName="Api/Controllers/EmployeesController.cs" Line="28" Column="54" />
+      <File FileName="Api/Controllers/DependentsController.cs" Line="93" Column="39" />
+      <File FileName="Api/Controllers/PaycheckController.cs" Line="56" Column="45" />
+      <File FileName="Api/Services/DependentService.cs" Line="27" Column="31" />
+      <File FileName="Api/Services/EmployeeService.cs" Line="37" Column="31" />
+      <File FileName="Api/DataAccess/BenefitsRepository.cs" Line="26" Column="10" />
+      <File FileName="Api/DataAccess/IBenefitsRepository.cs" Line="6" Column="52" />
+      <File FileName="Api/Program.cs" Line="38" Column="32" />
+      <File FileName="Api/Models/ApiResponse.cs" Line="3" Column="14" />
+      <File FileName="Api/Models/Employee.cs" Line="18" Column="1" />
       <File FileName="Api/Models/Relationship.cs" Line="1" Column="1" />
-      <File FileName="Api/Models/Dependent.cs" Line="1" Column="1" />
-      <File FileName="Api/Properties/launchSettings.json" Line="1" Column="1" />
+      <File FileName="Api/Models/Dependent.cs" Line="18" Column="1" />
+      <File FileName="Api/Properties/launchSettings.json" Line="16" Column="70" />
       <File FileName="Api/appsettings.json" Line="1" Column="1" />
+      <File FileName="Api/DataAccess/ApiContext.cs" Line="20" Column="55" />
+      <File FileName="Api/Dtos/Employee/GetEmployeeDto.cs" Line="12" Column="5" />
+      <File FileName="Api/Dtos/Dependent/GetDependentDto.cs" Line="5" Column="26" />
+      <File FileName="Api/Dtos/GetPaycheckDto.cs" Line="8" Column="29" />
+      <File FileName="Api/Mapping/MappingProfile.cs" Line="9" Column="73" />
+      <File FileName="Api/Models/PaySplitType.cs" Line="10" Column="2" />
+      <File FileName="Api/Services/Contracts/IDependentService.cs" Line="10" Column="18" />
+      <File FileName="Api/Services/Contracts/IEmployeeService.cs" Line="10" Column="20" />
+      <File FileName="Api/Services/Contracts/IPaycheckService.cs" Line="9" Column="25" />
+      <File FileName="ApiTests/IntegrationTest.cs" Line="21" Column="23" />
+      <File FileName="ApiTests/ShouldExtensions.cs" Line="22" Column="8" />
+      <File FileName="Api/Utilities/CreateTestingData.cs" Line="36" Column="38" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="PaylocityBenefitsCalculator">
-            <Node name="Api" expanded="True" selected="True" />
+            <Node name="Api">
+              <Node name="Controllers" expanded="True" />
+              <Node name="DataAccess" expanded="True" />
+              <Node name="Dtos" expanded="True">
+                <Node name="Dependent" expanded="True" />
+                <Node name="Employee" expanded="True" />
+                <Node name="Paycheck" selected="True" />
+              </Node>
+              <Node name="Mapping" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Properties" expanded="True" />
+              <Node name="Services" expanded="True">
+                <Node name="Contracts" expanded="True" />
+              </Node>
+            </Node>
             <Node name="ApiTests" expanded="True">
               <Node name="IntegrationTests" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__" />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/IntegrationTests/EmployeeIntegrationTests.cs" relfile="ApiTests/IntegrationTests/EmployeeIntegrationTests.cs" line="43" column="1" />
+      <Breakpoint file="/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/Api/Controllers/EmployeesController.cs" relfile="Api/Controllers/EmployeesController.cs" line="114" column="1" />
+      <Breakpoint file="/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/ApiTests/IntegrationTests/PaycheckIntegrationTests.cs" relfile="ApiTests/IntegrationTests/PaycheckIntegrationTests.cs" line="53" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>

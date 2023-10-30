@@ -7,8 +7,8 @@ namespace Api.Dtos.Paycheck
 	/// </summary>
     public class PaycheckDto
 	{
-		public EmployeeDto? EmployeeDto { get; set; }
-		public decimal GrossPay { get; set; }
+		public DateTime PayDay { get; set; }
+        public decimal GrossPay { get; set; }
 		public decimal NetPay { get; set; }
 		public decimal DeductionsTotal { get; set; }
 		public decimal EmployeeBenefitDeduction { get; set; }
@@ -17,6 +17,14 @@ namespace Api.Dtos.Paycheck
 		public int NumberOfDependentsOverAgeThreshold { get; set; }
 		public decimal AgeBasedBenefitsDeduction { get; set; }
 		public decimal AdditionalBenefitsCost { get; set; }
-	}
+
+		public decimal GrossPayYTD { get; set; }
+        public decimal NetPayYTD { get; set; }
+        public decimal DeductionsTotalYTD { get; set; }
+        public decimal EmployeeBenefitDeductionYTD { get; set; }
+        public decimal DependentBenefitsDeductionYTD { get; set; }
+        public decimal AgeBasedBenefitsDeductionYTD { get; set; }
+        public decimal AdditionalBenefitsCostYTD { get; set; }
+    }
 }
 

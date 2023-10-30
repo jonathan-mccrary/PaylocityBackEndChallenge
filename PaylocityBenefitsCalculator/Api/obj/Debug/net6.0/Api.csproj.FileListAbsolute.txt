@@ -45,3 +45,4 @@
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/Api/obj/Debug/net6.0/Api.pdb
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/Api/obj/Debug/net6.0/Api.genruntimeconfig.cache
 /Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/Api/obj/Debug/net6.0/ref/Api.dll
+/Users/McCraryMBP/Documents/GitHub/PaylocityBackEndChallenge/PaylocityBenefitsCalculator/Api/obj/debug/net6.0/Api.sourcelink.json
