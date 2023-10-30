@@ -39,7 +39,7 @@ to show our teams your abilities across the board.
     * employees have a base cost of $1,000 per month (for benefits)
     * each dependent represents an additional $600 cost per month (for benefits)
     * employees that make more than $80,000 per year will incur an additional 2% of their yearly salary in benefits costs
-  * dependents that are over 50 years old will incur an additional $200 per month
+    * dependents that are over 50 years old will incur an additional $200 per month
 * What are we looking for?
   * understanding of business requirements
   * correct implementation of requirements
